@@ -63,7 +63,12 @@ public class App {
      * Найти значение по индексу
      */
     static int getByIndex(ListNode head, int index) {
-        throw new UnsupportedOperationException();
+        if (index + 1 > size(head)) throw new IndexOutOfBoundsException("Такого индекса не существует");
+        if (index == 0) return head.value;
+        for (int i = 0; i < index; i++) {
+            head = head.next;
+        }
+        return head.value;
     }
 
     /**
