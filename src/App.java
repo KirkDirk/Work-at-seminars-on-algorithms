@@ -22,7 +22,7 @@ public class App {
 
         ListNode node = new ListNode(1, new ListNode(2, new ListNode(7, new ListNode(4)))); // 1 -> 2 -> 2 -> 4
         System.out.println("Размер списка: " + size(node)); // 4
-        asString(node); // [1 -> 2 -> 2 -> 4]
+        System.out.println(asString(node)); // [1 -> 2 -> 2 -> 4]
 
         System.out.println(getByIndex(node, 0)); // 1
         System.out.println(getByIndex(node, 3)); // 4
@@ -48,8 +48,15 @@ public class App {
      * [first_value -> second_value -> ... -> last_value]
      */
     static String asString(ListNode head) {
-        
-        throw new UnsupportedOperationException();
+        if (head == null) return "null";
+        String listNodeAsString = "[";
+        if (head.next == null) return listNodeAsString + head.value + "]";
+        while (head.next != null) {
+            listNodeAsString += head.value + " -> ";
+            head = head.next;
+        }
+        listNodeAsString += head.value + "]";
+        return listNodeAsString;        
     }
 
     /**
